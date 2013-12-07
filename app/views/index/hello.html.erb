@@ -1,0 +1,47 @@
+<style>
+body{
+font-family: arial, helvetica;
+}
+.middle{
+    margin: 0 auto;
+    width:80%;
+    text-align:center;
+}
+.content{
+	text-align:left;
+	width:60%;
+	margin: 0 auto;
+}
+</style>
+<body>
+<div class="middle">
+<%= image_tag "devops_intensifies.gif" %>
+</div>
+<br/>
+
+<div class="content">
+This rails application was deployed with a single command to AWS.  What happens when it runs?  
+<br/>
+<ol>
+<li>A shell script passes a CloudFormation template containing the instance and security group definitions to Boto.</li>
+<li>Boto kicks off the stack creation on AWS.</li>
+<li>A CloudInit script in the instance definition bootstraps puppet and git, then downloads repos from Github.</li>  
+<li>Puppet provisions rvm, ruby, and rails.</li> 
+<li>Finally, CloudInit runs Webrick as a daemon.</li>   
+</ol>
+<br/>To do: 
+<br/>
+<ol>
+<li>Reduce CloudInit script to merely bootstrap Puppet.</li>
+<li>Let Puppet Master and Capistrano handle instance and app provisioning, respectively.</li>
+<li>Get better feedback on errors that may occur during this process.</li>
+<li>Introduce an Elastic Load Balancer and set autoscale to 2.</li>
+<li>Work toward automatic app redeployments triggered by git pushes.</li>
+</ol> 
+Onward!
+</br>
+</br>
+Brandon
+</div>
+</div>
+</body>
